@@ -34,15 +34,18 @@ class LinkedList {
         if(!this._head) {
             this._head = node;
             this._tail = node;
+            this._length++;
             return this;
         } 
 
         this._tail!.next = node;
         this._tail = node;
+        this._length++;
 
         return this;
     }
 
+    // Big O Type: O(n)
     public pop(): LinkedList {
         if(!this._head) return this;
 
@@ -54,8 +57,22 @@ class LinkedList {
         }
         
         this._tail!.next = null;
+        this._length--;
 
         return this;
+    }
+
+
+    // Big O Type: O(n)
+    public toString(): string {
+        const output:string[] = [];
+        let current = this._head;
+        while(current) {
+            output.push(current.value);
+            current = current.next;
+        }
+
+        return output.join(', ');
     }
 }
 

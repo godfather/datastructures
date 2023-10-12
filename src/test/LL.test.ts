@@ -21,6 +21,7 @@ describe('Testing Linked List operations', () => {
         expect(ll.head?.value).toEqual(firstNode.value);
         expect(ll.tail?.value).toEqual(thirdNode.value);
         expect(ll.head?.next).toBe(secondNode);
+        expect(ll.length).toBe(3);
     });
 
     test('Testing push operations', () => {
@@ -28,7 +29,10 @@ describe('Testing Linked List operations', () => {
         ll.push(secondNode).push(thirdNode).push(new Node('Fourth Value'));
         ll.pop();
 
+        console.log(ll.toString());
+
         expect(ll.tail?.next).toEqual(null);
         expect(ll.tail?.value).toEqual(thirdNode.value);
+        expect(ll.length).toBe(3);
     });
 });
