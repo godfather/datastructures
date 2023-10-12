@@ -64,6 +64,7 @@ class LinkedList {
         return this;
     }
 
+    //Big O Type: O(1)
     public shift(node: Node): LinkedList {
         if(!this._head) {
             this._initialize(node);
@@ -73,6 +74,18 @@ class LinkedList {
         node.next = this._head;
         this._head = node;
         this._length++;
+
+        return this;
+    }
+
+    //Big O Type: O(1);
+    public unshift(): LinkedList {
+        if(!this._head) return this;
+
+        const node = this._head;
+        this._head = this._head.next;
+        node.next = null;
+        this._length--;
 
         return this;
     }

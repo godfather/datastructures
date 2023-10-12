@@ -47,5 +47,16 @@ describe('Testing Linked List operations', () => {
         expect(ll.tail).toBe(thirdNode);
         expect(ll.length).toBe(4);
         expect(ll.head?.next).toBe(firstNode);
-    })
+    });
+
+    test('Testing unshift operation', () => {
+        const ll = new LinkedList(firstNode);
+        ll.push(secondNode).shift(fourthNode).push(thirdNode).unshift();
+
+        console.log(ll.toString());
+
+        expect(ll.head?.value).toEqual(firstNode.value);
+        expect(ll.length).toBe(3);
+        expect(ll.head?.next).toBe(secondNode);
+    });
 });
