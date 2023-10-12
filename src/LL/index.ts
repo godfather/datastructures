@@ -29,6 +29,7 @@ class LinkedList {
         return this._length;
     }
 
+    //Big O Type: O(1);
     public push(node: Node):LinkedList {
         if(!this._head) {
             this._head = node;
@@ -38,6 +39,21 @@ class LinkedList {
 
         this._tail!.next = node;
         this._tail = node;
+
+        return this;
+    }
+
+    public pop(): LinkedList {
+        if(!this._head) return this;
+
+        let current = this._head;
+
+        while(current.next) {
+            this._tail = current;
+            current = current.next;
+        }
+        
+        this._tail!.next = null;
 
         return this;
     }
