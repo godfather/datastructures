@@ -10,11 +10,13 @@ class LinkedList {
         this._tail = null;
         this._length = 0;
 
-        if(node) {
-            this._head = node;
-            this._tail = node;
-            this._length++;
-        }
+        if(node) this._initialize(node);
+    }
+
+    private _initialize(node: Node) {
+        this._head = node;
+        this._tail = node;
+        this._length++;
     }
 
     public get head(): Node|null {
@@ -62,6 +64,18 @@ class LinkedList {
         return this;
     }
 
+    public shift(node: Node): LinkedList {
+        if(!this._head) {
+            this._initialize(node);
+            return this;
+        }
+
+        node.next = this._head;
+        this._head = node;
+        this._length++;
+
+        return this;
+    }
 
     // Big O Type: O(n)
     public toString(): string {
