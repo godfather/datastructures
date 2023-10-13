@@ -1,11 +1,19 @@
-import { describe, test, expect } from '@jest/globals';
+import { describe, test, expect, beforeEach } from '@jest/globals';
 import LinkedList from '../LL';
 import Node from '../LL/Node';
 
-const firstNode = new Node('First Node');
-const secondNode = new Node('Second Node');
-const thirdNode = new Node('Thrid Node');
-const fourthNode = new Node('Fourth Node');
+let firstNode: Node;
+let secondNode: Node;
+let thirdNode: Node;
+let fourthNode: Node;
+
+
+beforeEach(() => {
+    firstNode = new Node('First Node');
+    secondNode = new Node('Second Node');
+    thirdNode = new Node('Thrid Node');
+    fourthNode = new Node('Fourth Node');    
+});
 
 describe('Testing Linked List operations', () => {
     test('Testing LL initialization', () => {
@@ -132,5 +140,43 @@ describe('Testing Linked List operations', () => {
         expect(node).toBe(fourthNode);
         expect(ll.tail?.value).toEqual(newNode.value);
         expect(ll.length).toBe(5);
+    });
+
+    test('Testing remove operation', () => {
+        const ll = new LinkedList(firstNode);
+        ll.push(secondNode).push(thirdNode).push(fourthNode);
+
+        ll.remove(1);
+
+        console.log(ll.toString());
+
+        expect(ll.length).toEqual(3);
+        expect(ll.head?.next).toBe(thirdNode);
+    });
+
+    test('Testing remove first node', () => {
+        const ll = new LinkedList(firstNode);
+        ll.push(secondNode).push(thirdNode).push(fourthNode);
+
+        ll.remove(0);
+
+        console.log(ll.toString());
+
+        expect(ll.length).toEqual(3);
+        expect(ll.head).toBe(secondNode);
+        expect(ll.head?.next).toBe(thirdNode);
+    });
+
+    test('Testing remove last node', () => {
+        const ll = new LinkedList(firstNode);
+        ll.push(secondNode).push(thirdNode).push(fourthNode);
+
+        ll.remove(3);
+
+        console.log(ll.toString());
+
+        expect(ll.length).toEqual(3);
+        expect(ll.tail).toBe(thirdNode);
+        expect(ll.tail?.next).toBe(null);
     });
 });

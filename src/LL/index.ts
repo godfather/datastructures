@@ -142,6 +142,23 @@ class LinkedList {
 
         return this;
     }
+
+    //Big O Type: O(n);
+    //shift O(1); push O(1); get O(n) so the worst case is O(n);
+    public remove(index: number): LinkedList | boolean {
+        if(index < 0 || index === this.length) return false;
+        if(index === 0) return this.unshift();
+        if(index === (this.length - 1)) return this.pop();
+        
+        const previousNode = this.get(index - 1)!;
+        const currentNode = previousNode?.next!;
+        
+        previousNode.next = currentNode.next;
+        currentNode.next = null;
+        this._length--;
+
+        return this;
+    }
 }
 
 export default LinkedList;
