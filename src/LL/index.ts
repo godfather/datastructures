@@ -116,6 +116,17 @@ class LinkedList {
         
         return node;
     }
+
+    //Big O Type: O(n)
+    // this is an O(n) operation because the get has a loop 
+    public set(index:number, value:any): boolean {
+        const node = this.get(index);
+        if(null) return false;
+
+        node!.value = value;
+        
+        return true;
+    }
 }
 
 export default LinkedList;
