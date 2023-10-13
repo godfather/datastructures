@@ -127,6 +127,21 @@ class LinkedList {
         
         return true;
     }
+
+    //Big O Type: O(n);
+    //shift O(1); push O(1); get O(n) so the worst case is O(n);
+    public insert(index: number, newNode: Node): LinkedList | boolean {
+        if(index < 0 || index > this.length) return false;
+        if(index === 0) return this.shift(newNode);
+        if(index === this.length) return this.push(newNode);
+
+        const previousNode = this.get(index - 1)!;
+        newNode.next = previousNode?.next;
+        previousNode.next = newNode;
+        this._length++;
+
+        return this;
+    }
 }
 
 export default LinkedList;

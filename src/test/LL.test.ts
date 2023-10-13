@@ -84,5 +84,53 @@ describe('Testing Linked List operations', () => {
         const node = ll.get(2);
         expect(node?.value).toEqual(newValue);
         expect(node?.next).toBe(fourthNode);
-    })
+    });
+
+    test('Testing insert operation', () => {
+        const ll = new LinkedList(firstNode);
+        ll.push(secondNode).push(thirdNode).push(fourthNode);
+
+        const newNode = new Node('Fifth Node');
+
+        ll.insert(1, newNode);
+
+        console.log(ll.toString());
+        
+        const node = ll.get(2);
+        expect(node).toBe(secondNode);
+        expect(ll.get(1)?.value).toEqual(newNode.value);
+        expect(ll.length).toBe(5);
+    });
+
+    test('Testing insert operation in position 0', () => {
+        const ll = new LinkedList(firstNode);
+        ll.push(secondNode).push(thirdNode).push(fourthNode);
+
+        const newNode = new Node('Fifth Node');
+
+        ll.insert(0, newNode);
+
+        console.log(ll.toString());
+        
+        const node = ll.get(2);
+        expect(node).toBe(secondNode);
+        expect(ll.head?.value).toEqual(newNode.value);
+        expect(ll.length).toBe(5);
+    });
+
+    test('Testing insert operation in last position', () => {
+        const ll = new LinkedList(firstNode);
+        ll.push(secondNode).push(thirdNode).push(fourthNode);
+
+        const newNode = new Node('Fifth Node');
+
+        ll.insert(4, newNode);
+
+        console.log(ll.toString());
+        
+        const node = ll.get(3);
+        expect(node).toBe(fourthNode);
+        expect(ll.tail?.value).toEqual(newNode.value);
+        expect(ll.length).toBe(5);
+    });
 });
