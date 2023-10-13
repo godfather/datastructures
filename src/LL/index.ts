@@ -159,6 +159,27 @@ class LinkedList {
 
         return this;
     }
+
+    public reverse(): LinkedList {
+        let current = this._head;
+        let walker = current!.next;
+        let previous = null;
+
+        this._head = this._tail;
+        this._tail = current;        
+
+
+        while(walker) {
+            current!.next = previous;
+            previous = current;
+            current = walker;             
+            walker = walker?.next;
+
+        }
+
+        this._head!.next = previous;
+        return this;
+    }
 }
 
 export default LinkedList;

@@ -38,7 +38,7 @@ describe('Testing Linked List operations', () => {
         ll.push(secondNode).push(thirdNode).push(fourthNode);
         ll.pop();
 
-        console.log(ll.toString());
+        // console.log(ll.toString());
 
         expect(ll.tail?.next).toEqual(null);
         expect(ll.tail?.value).toEqual(thirdNode.value);
@@ -49,7 +49,7 @@ describe('Testing Linked List operations', () => {
         const ll = new LinkedList(firstNode);
         ll.push(secondNode).shift(fourthNode).push(thirdNode);
 
-        console.log(ll.toString());
+        // console.log(ll.toString());
 
         expect(ll.head?.value).toEqual(fourthNode.value);
         expect(ll.tail).toBe(thirdNode);
@@ -61,7 +61,7 @@ describe('Testing Linked List operations', () => {
         const ll = new LinkedList(firstNode);
         ll.push(secondNode).shift(fourthNode).push(thirdNode).unshift();
 
-        console.log(ll.toString());
+        // console.log(ll.toString());
 
         expect(ll.head?.value).toEqual(firstNode.value);
         expect(ll.length).toBe(3);
@@ -87,7 +87,7 @@ describe('Testing Linked List operations', () => {
         const newValue = 'Parangaricutirimirruaro';
         ll.set(2, newValue);
 
-        console.log(ll.toString());
+        // console.log(ll.toString());
 
         const node = ll.get(2);
         expect(node?.value).toEqual(newValue);
@@ -102,7 +102,7 @@ describe('Testing Linked List operations', () => {
 
         ll.insert(1, newNode);
 
-        console.log(ll.toString());
+        // console.log(ll.toString());
         
         const node = ll.get(2);
         expect(node).toBe(secondNode);
@@ -118,7 +118,7 @@ describe('Testing Linked List operations', () => {
 
         ll.insert(0, newNode);
 
-        console.log(ll.toString());
+        // console.log(ll.toString());
         
         const node = ll.get(2);
         expect(node).toBe(secondNode);
@@ -134,7 +134,7 @@ describe('Testing Linked List operations', () => {
 
         ll.insert(4, newNode);
 
-        console.log(ll.toString());
+        // console.log(ll.toString());
         
         const node = ll.get(3);
         expect(node).toBe(fourthNode);
@@ -148,7 +148,7 @@ describe('Testing Linked List operations', () => {
 
         ll.remove(1);
 
-        console.log(ll.toString());
+        // console.log(ll.toString());
 
         expect(ll.length).toEqual(3);
         expect(ll.head?.next).toBe(thirdNode);
@@ -160,7 +160,7 @@ describe('Testing Linked List operations', () => {
 
         ll.remove(0);
 
-        console.log(ll.toString());
+        // console.log(ll.toString());
 
         expect(ll.length).toEqual(3);
         expect(ll.head).toBe(secondNode);
@@ -173,10 +173,20 @@ describe('Testing Linked List operations', () => {
 
         ll.remove(3);
 
-        console.log(ll.toString());
+        // console.log(ll.toString());
 
         expect(ll.length).toEqual(3);
         expect(ll.tail).toBe(thirdNode);
         expect(ll.tail?.next).toBe(null);
     });
+
+    test("Testing reverse operation", () => {
+        const ll = new LinkedList(firstNode);
+        ll.push(secondNode).push(thirdNode).push(fourthNode);
+
+        ll.reverse();
+
+        console.log(JSON.stringify(ll, null, 2));
+        console.log(ll.toString());
+    })
 });
