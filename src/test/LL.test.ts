@@ -59,4 +59,16 @@ describe('Testing Linked List operations', () => {
         expect(ll.length).toBe(3);
         expect(ll.head?.next).toBe(secondNode);
     });
+
+    test('testing get operation', () => {
+        const ll = new LinkedList(firstNode);
+        ll.push(secondNode).push(thirdNode).push(fourthNode);
+
+        const node = ll.get(3);
+        const nullNode = ll.get(-7);
+
+        expect(node).toBe(fourthNode);
+        expect(node?.value).toBe(fourthNode.value);
+        expect(nullNode).toBe(null);
+    })
 });

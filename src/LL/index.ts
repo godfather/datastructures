@@ -101,6 +101,21 @@ class LinkedList {
 
         return output.join(', ');
     }
+
+    //Big O Type: O(n);
+    public get(index:number): Node | null {
+        if(!this._head || index > this.length || index < 0) return null;
+
+        let current = this.head;
+        let node: Node | null = null;
+        
+        for(let i = 0; i <= index; i++) {
+            if(i === index) node = current;
+            else current = current?.next!;
+        }
+        
+        return node;
+    }
 }
 
 export default LinkedList;
